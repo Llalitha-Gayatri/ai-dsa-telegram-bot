@@ -3,7 +3,21 @@ const TELEGRAM_TOKEN = "YOUR_TELEGRAM_TOKEN";
 const CHAT_ID = "YOUR_CHAT_ID";
 function sendDailyDSAQuestions() {
 
-  const prompt = "Generate 3 Data Structures and Algorithms interview questions: Easy, Medium, Hard. Mention topic. No solutions.";
+    const today = new Date().toDateString();
+    const random = Math.floor(Math.random() * 1000);
+    
+    const prompt = `
+    Date: ${today}
+    Seed: ${random}
+    
+    Generate 3 UNIQUE Data Structures and Algorithms interview questions.
+    
+    Rules:
+    - No repetition
+    - One Easy, Medium, Hard
+    - Different topics daily
+    - No solutions
+    `;
 
   const url = "https://openrouter.ai/api/v1/chat/completions";
 
